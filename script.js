@@ -1,41 +1,53 @@
-var wrapper =  document.body.querySelector(".wrapper");
-
-dragonHealth=0
-
-if(dragonHealth <= 10){
-  wrapper.innerHTML="Dragon damage: " + dragonHealth; 
-}else if(dragonHealth >= 10){
-  wrapper.innerHTML+"You Win!";
-}
-
-dragonHealth=0
-
-
-function fire(clicked){
-  var fireDam = 3;
-  if(clicked){
-dragonHealth=dragonHealth+fireDam;
+var wrap = document.body.querySelector(".wrap"); var list = [
+  {
+    name: "Harry",
+    age: 25
+  },
+  {
+    name: "Larry",
+    age: 15
+  },
+  {
+    name: "Bert",
+    age: 45
+  },
+  {
+    name: "Jerry",
+    age: 35
+  },
+  {
+    name: "Berry",
+    age: 5
+  },
+  {
+    name: "Bart",
+    age: 55
   }
-}
+];
 
-function ice(clicked){
-  var iceDam = 1+1;
-  dragonHealth=dragonHealth+iceDam;
-}
+for(var i =0; i<list.length; i++){
+  var ele = document.createElement("div");
+  var eleName = document.createElement("h1");
+  var eleAge = document.createElement("h2");
+  
+  if(list[i].age>25){
+    ele.style.color="green";
+  }
+  
+  eleName.innerHTML=list[i].name;
+  eleAge.innerHTML="Age: "+list[i].age;
+  ele.appendChild(eleName);
+  ele.appendChild(eleAge);
+  wrap.appendChild(ele);
+} 
 
-function poison(){
-  var poisonDam = 4;
-  dragonHealth=dragonHealth+poisonDam;
-}
+var btnAdd = document.body.querySelector(".btn")
 
-document.body.querySelector(".fire").addEventListener("click", function(){
-  fire(true);
-})
-
-document.body.querySelector(".ice").addEventListener("click", function(){
-  ice();
-})
-
-document.body.querySelector(".poison").addEventListener("click", function(){
-  poison();
+btnAdd.addEventListener('click',
+   function()
+{
+    var value = parseInt(document.getElementById('number').value);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
 })
